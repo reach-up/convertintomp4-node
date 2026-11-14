@@ -3,7 +3,7 @@
 Official Node.js/TypeScript SDK for the [ConvertIntoMP4](https://convertintomp4.com) file conversion API: 270+ formats across video, audio, image, document, archive, and font conversion, backed by 13 specialized conversion engines.
 
 - **API docs:** [convertintomp4.com/api-docs](https://convertintomp4.com/api-docs)
-- **Measured performance:** [convertintomp4.com/reports/benchmarks](https://convertintomp4.com/reports/benchmarks. In the July 2026 run against the production API, a 22 MB 30-second 1080p MOV converted to MP4 in **4.0 seconds** of server processing time, and all 20 benchmark cases produced format-validated output. Raw data: [benchmark-study.json](https://convertintomp4.com/benchmark-study.json).
+- **Measured performance:** [convertintomp4.com/reports/benchmarks](https://convertintomp4.com/reports/benchmarks). In the July 2026 run against the production API, a 22 MB 30-second 1080p MOV converted to MP4 in **4.0 seconds** of server processing time, and all 20 benchmark cases produced format-validated output. Raw data: [benchmark-study.json](https://convertintomp4.com/benchmark-study.json).
 
 ## Installation
 
