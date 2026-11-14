@@ -1,0 +1,57 @@
+{
+  "name": "convertintomp4",
+  "version": "1.2.0",
+  "description": "Official Node.js/TypeScript SDK for the ConvertIntoMP4 file conversion API",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "lint": "eslint src/",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "convertintomp4",
+    "file-conversion",
+    "video-converter",
+    "audio-converter",
+    "image-converter",
+    "pdf",
+    "api",
+    "sdk"
+  ],
+  "author": "ConvertIntoMP4",
+  "license": "MIT",
+  "homepage": "https://convertintomp4.com/api-docs",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reach-up/convertintomp4-node.git"
+  },
+  "bugs": {
+    "url": "https://github.com/reach-up/convertintomp4-node/issues"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.0",
+    "@types/node": "^22.12.0",
+    "vitest": "^5.1.0",
+    "eslint": "^8.0.0"
+  }
+}
