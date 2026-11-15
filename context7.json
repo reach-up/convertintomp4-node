@@ -1,0 +1,10 @@
+{
+  "$schema": "https://context7.com/schema/context7.json",
+  "projectTitle": "ConvertIntoMP4 Node.js SDK",
+  "description": "Official Node.js and TypeScript SDK for the ConvertIntoMP4 file conversion API: convert video, audio, image, document and PDF files, run multi-step jobs and receive signed webhooks.",
+  "excludeFolders": [
+    "src",
+    "tests",
+    "convertintomp4"
+  ]
+}

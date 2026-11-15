@@ -663,7 +663,7 @@ describe('Job Polling', () => {
   });
 
   // Quick-convert jobIds are bare 12-char nanoids and NEVER enter the Jobs API
-  // Redis store, so GET /v1/jobs/{id} 404s forever (verified in production
+  // job store, so GET /v1/jobs/{id} 404s forever (verified in production
   // 2026-07-26). They must be polled at GET /v1/status/{id}.
   it('waitForJob polls /status for quick-convert job ids', async () => {
     const client = createClient();
@@ -786,7 +786,7 @@ describe('SSE Streaming', () => {
     const client = createClient();
     const sseData = [
       'event: progress\ndata: {"type":"progress","jobId":"j2","timestamp":"2026-01-01","progress":80}\n\n',
-      'event: completed\ndata: {"type":"completed","jobId":"j2","timestamp":"2026-01-01","outputUrl":"https://r2.example.com/out.webm"}\n\n',
+      'event: completed\ndata: {"type":"completed","jobId":"j2","timestamp":"2026-01-01","outputUrl":"https://files.example.com/out.webm"}\n\n',
       // This should never be reached
       'event: progress\ndata: {"type":"progress","jobId":"j2","timestamp":"2026-01-01","progress":100}\n\n',
     ];

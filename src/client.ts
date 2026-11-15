@@ -519,7 +519,7 @@ export class ConvertIntoMP4Client {
    * Poll a job until it reaches a terminal state (completed, failed, or cancelled).
    *
    * Handles BOTH job namespaces the API exposes:
-   *  - Jobs API pipelines (`createJob`) return `job_…` ids stored in Redis and
+   *  - Jobs API pipelines (`createJob`) return `job_…` ids kept in the jobs store and
    *    are polled at `GET /v1/jobs/{id}`.
    *  - Quick-convert jobs (`convert`, `uploadFile`, `importFromUrl`,
    *    `convertFromStorage`) return a bare 12-char id that NEVER enters that
@@ -860,11 +860,11 @@ export class ConvertIntoMP4Client {
   }
 
   // ==========================================================================
-  // Presigned Upload Methods (Direct-to-R2)
+  // Presigned Upload Methods (direct to storage)
   // ==========================================================================
 
   /**
-   * Get a presigned URL for uploading a file directly to R2 storage.
+   * Get a presigned URL for uploading a file directly to storage.
    * This bypasses the API server for large file uploads.
    *
    * @example
@@ -876,7 +876,7 @@ export class ConvertIntoMP4Client {
    *   fileSize: 1024 * 1024 * 500, // 500MB
    * });
    *
-   * // 2. Upload directly to R2
+   * // 2. Upload directly to storage
    * await fetch(uploadUrl, { method: 'PUT', body: fileBuffer });
    *
    * // 3. Start conversion from uploaded file
@@ -894,7 +894,7 @@ export class ConvertIntoMP4Client {
   }
 
   /**
-   * Upload a file directly to R2 using a presigned URL, then start conversion.
+   * Upload a file directly to storage using a presigned URL, then start conversion.
    * Combines getPresignedUploadUrl + PUT upload + convertFromStorage into one call.
    *
    * @example
@@ -918,7 +918,7 @@ export class ConvertIntoMP4Client {
       fileSize: file instanceof Blob ? file.size : file.length,
     });
 
-    // Upload directly to R2
+    // Upload directly to storage
     const body = Buffer.isBuffer(file) ? new Uint8Array(file) : file;
     const uploadResponse = await fetch(presign.uploadUrl, {
       method: 'PUT',
@@ -947,7 +947,7 @@ export class ConvertIntoMP4Client {
   }
 
   /**
-   * Start a conversion from a file already uploaded to R2 storage.
+   * Start a conversion from a file already uploaded to storage.
    */
   async convertFromStorage(
     options: StorageConvertRequest,
